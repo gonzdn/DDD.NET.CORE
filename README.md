@@ -20,6 +20,7 @@ GraphQLServer/appsettings.json
 add-migration Initial
 update-database
 ```
+3. Run the project after replacing the appsettings.json 
 
 Nugget libraries used on the DDD project:
 
@@ -40,6 +41,39 @@ HotChocolate.AspNetCore.Playground
 Microsoft.EntityFrameworkCore
 Microsoft.EntityFrameworkCore.SqlServer
 Microsoft.EntityFrameworkCore.Tools
+```
+
+4. When using GraphQL, set GraphQLServer as default project, then run again. 
+To open Playground and start testing GraphQL make sure to acces the following URL, then paste the following queries and click the play button on playground client.
+```bash
+https://localhost:44371/playground/
+```
+
+```bash
+#Get all cars
+query{
+  cars{
+    id
+    name
+    model
+    engine
+  }
+}
+
+#Create a car
+mutation {
+  create(car: {name:"FordCar", model:"Ford", engine:"V34"}){
+    name
+    model
+    engine
+  }
+}
+
+#Delete a car
+mutation {
+  delete(deleteCar:{id:2})
+  }
+}
 ```
 
 ## Contributing
