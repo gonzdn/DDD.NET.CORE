@@ -1,6 +1,6 @@
-# Net Core 5 Basic DDD Architecure with GraphQL
+# Net Core 5 Basic DDD Architecture with GraphQL
 
-Basic DDD structure with GraphQL to refer as a base proyect to understand better how this works.
+Basic DDD structure with GraphQL to refer as a base project to understand better how this works.
 
 ## Installation
 
@@ -44,7 +44,7 @@ Microsoft.EntityFrameworkCore.Tools
 ```
 
 4. When using GraphQL, set GraphQLServer as default project, then run again. 
-To open Playground and start testing GraphQL make sure to acces the following URL, then paste the following queries and click the play button on playground client.
+To open Playground and start testing GraphQL make sure to access the following URL, then paste the queries attached below and click the play button on playground client.
 ```bash
 https://localhost:44371/playground/
 ```
