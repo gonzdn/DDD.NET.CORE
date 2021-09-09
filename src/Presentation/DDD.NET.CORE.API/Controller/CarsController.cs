@@ -11,21 +11,16 @@ namespace DDD.NET.CORE.API.Controller
     public class CarsController : ControllerBase
     {
         ICarService carService;
-
         public CarsController(ICarService carService)
         {
             this.carService = carService;
         }
-
-        // GET api/cars
         [HttpGet]
         [ProducesResponseType(typeof(List<CarDTO>), StatusCodes.Status200OK)]
         public IActionResult Get()
         {
             return Ok(carService.Get());
         }
-
-        // GET api/cars/5
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(CarDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -35,16 +30,12 @@ namespace DDD.NET.CORE.API.Controller
             if(response == null) return NotFound();
             return Ok();
         }
-
-        // POST api/cars
         [HttpPost]
         [ProducesResponseType(typeof(CarDTO), StatusCodes.Status200OK)]
         public IActionResult Post(CarCreateDTO carPost)
         {
             return Ok(carService.Create(carPost));
         }
-
-        // PUT api/cars/5
         [HttpPut]
         [ProducesResponseType(typeof(CarDTO), StatusCodes.Status200OK)]
         public IActionResult Put(CarDTO carPost)
@@ -52,8 +43,6 @@ namespace DDD.NET.CORE.API.Controller
             carService.Update(carPost);
             return Ok();
         }
-
-        // DELETE api/cars/5
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(CarDTO), StatusCodes.Status200OK)]
         public IActionResult Delete(int id)
