@@ -1,4 +1,4 @@
-using DDD.NET.CORE.API.Configuration;
+using DDD.NET.CORE.API.Configurations;
 using DDD.NET.CORE.INFRAESTRUCTURE;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
