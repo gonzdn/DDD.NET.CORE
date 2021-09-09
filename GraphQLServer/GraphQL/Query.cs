@@ -19,7 +19,7 @@ namespace GraphQLServer.GraphQL
 
         public IQueryable<CarDTO> Cars()
         {
-            return _carService.GetCars().AsQueryable();
+            return _carService.Get().AsQueryable();
         }
     }
 }

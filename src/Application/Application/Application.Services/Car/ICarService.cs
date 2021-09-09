@@ -8,7 +8,7 @@ namespace DDD.NET.CORE.APPLICATION.Application.Services.Car
         CarDTO Create(CarCreateDTO carEntitie);
         void Update(CarDTO carEntitie);
         void Delete(int id);
-        CarDTO GetCar(int id);
-        List<CarDTO> GetCars();
+        CarDTO Get(int id);
+        List<CarDTO> Get();
     }
 }

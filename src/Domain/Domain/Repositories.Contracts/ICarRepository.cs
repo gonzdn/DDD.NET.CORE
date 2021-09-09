@@ -9,7 +9,7 @@ namespace DDD.NET.CORE.DOMAIN.Repositories.Contracts
         Car Create(Car carEntitie);
         void Update(Car carEntitie);
         void Delete(int id);
-        Car GetCar(int id);
-        List<Car> GetCars();
+        Car Get(int id);
+        List<Car> Get();
     }
 }

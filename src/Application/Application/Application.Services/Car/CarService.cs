@@ -28,15 +28,15 @@ namespace DDD.NET.CORE.APPLICATION.Application.Services.Car
             _domainCarRepository.Delete(id);
         }
 
-        public CarDTO GetCar(int id)
+        public CarDTO Get(int id)
         {
-            var car = _domainCarRepository.GetCar(id);
+            var car = _domainCarRepository.Get(id);
             return car.Adapt<CarDTO>();
         }
 
-        public List<CarDTO> GetCars()
+        public List<CarDTO> Get()
         {
-            var car = _domainCarRepository.GetCars();
+            var car = _domainCarRepository.Get();
             return car.Adapt<List<CarDTO>>();
         }
 

@@ -1,7 +1,8 @@
-﻿using DDD.NET.CORE.APPLICATION.Application.Services.Car;
+﻿using System.Collections.Generic;
+using DDD.NET.CORE.APPLICATION.Application.Services.Car;
 using DDD.NET.CORE.APPLICATION.Application.Services.DTO.Car;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace DDD.NET.CORE.API.Controller
 {
@@ -18,40 +19,47 @@ namespace DDD.NET.CORE.API.Controller
 
         // GET api/cars
         [HttpGet]
-        public ActionResult<string> Get()
+        [ProducesResponseType(typeof(List<CarDTO>), StatusCodes.Status200OK)]
+        public IActionResult Get()
         {
-            return JsonConvert.SerializeObject(carService.GetCars());
+            return Ok(carService.Get());
         }
 
         // GET api/cars/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [ProducesResponseType(typeof(CarDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult Get(int id)
         {
-            return JsonConvert.SerializeObject(carService.GetCar(id));
+            var response = carService.Get(id);
+            if(response == null) return NotFound();
+            return Ok();
         }
 
         // POST api/cars
         [HttpPost]
-        public ActionResult<string> Post(CarCreateDTO carPost)
-        {            
-            return JsonConvert.SerializeObject(carService.Create(carPost));
+        [ProducesResponseType(typeof(CarDTO), StatusCodes.Status200OK)]
+        public IActionResult Post(CarCreateDTO carPost)
+        {
+            return Ok(carService.Create(carPost));
         }
 
         // PUT api/cars/5
-        [HttpPut("{id}")]
-        public void Put(int id, CarDTO carPost)
+        [HttpPut]
+        [ProducesResponseType(typeof(CarDTO), StatusCodes.Status200OK)]
+        public IActionResult Put(CarDTO carPost)
         {
-            CarDTO carro = new CarDTO();
-            carro = carPost;
-            carro.Id = id;
-            carService.Update(carro);
+            carService.Update(carPost);
+            return Ok();
         }
 
         // DELETE api/cars/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [ProducesResponseType(typeof(CarDTO), StatusCodes.Status200OK)]
+        public IActionResult Delete(int id)
         {
             carService.Delete(id);
+            return Ok();
         }
     }
 }
